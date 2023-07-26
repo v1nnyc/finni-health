@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patients-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: patients
+  template:
+    metadata:
+      labels:
+        app: patients
+    spec:
+      containers:
+        - name: patients
+          image: v1nnyc/patients
+          env:
+            # - name: MONGO_URI
+            #   value: "mongodb://patients-mongo-srv:27017/patients"
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: patients-srv
+spec:
+  selector:
+    app: patients
+  ports:
+    - name: patients
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

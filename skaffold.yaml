@@ -26,14 +26,14 @@ build:
         manual:
           - src: "pages/**/*.js"
             dest: .
-    # - image: v1nnyc/tickets
-    #   context: tickets
-    #   docker:
-    #     dockerfile: Dockerfile
-    #   sync:
-    #     manual:
-    #       - src: "src/**/*.ts"
-    #         dest: .
+    - image: v1nnyc/patients
+      context: patients
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
     # - image: v1nnyc/orders
     #   context: orders
     #   docker:

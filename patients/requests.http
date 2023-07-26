@@ -1,0 +1,17 @@
+POST ticketing.dev/api/tickets HTTP/1.1
+Cookie: session=eyJqd3QiOiJleUpoYkdjaU9pSklVekkxTmlJc0luUjVjQ0k2SWtwWFZDSjkuZXlKcFpDSTZJalkwTlRBM1kyRTROR0l3TUdSak5UZ3dZbVJpTTJJeVpDSXNJbVZ0WVdsc0lqb2lkR1Z6ZERWQWRHVnpkQzVqYjIwaUxDSnBZWFFpT2pFMk9ESTVPVFl6T1RKOS5MaXdzRURZRnF3OUQ4MzRxbmlFWHlOR1p1VjZJRDlNY2RXa2xDdDZhazFnIn0=
+Content-Type: application/json
+
+{
+  "title": "test_title",
+  "price": 10
+}
+
+###
+POST http://ticketing.dev/api/orders
+Cookie: session=eyJqd3QiOiJleUpoYkdjaU9pSklVekkxTmlJc0luUjVjQ0k2SWtwWFZDSjkuZXlKcFpDSTZJalkwTlRGaU56SmtNalUyWXpJeE9UVmhZMkkxT0RNNE5DSXNJbVZ0WVdsc0lqb2lkR1Z6ZEVCMFpYTjBMbU52YlNJc0ltbGhkQ0k2TVRZNE16QTNOamt4TTMwLkxkUzhpMTI3YmxHWHNiczlxdzZHN2Zjc3VVVXd1TVFmOHh2UHhjM3FrRlEifQ=
+Content-Type: application/json
+
+{
+    "ticketId": "645990ab44c86f70301d8f4e"
+}
