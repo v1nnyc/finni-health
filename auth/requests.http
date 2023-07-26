@@ -1,0 +1,27 @@
+GET finni.dev/api/users/currentuser
+
+###
+POST finni.dev/api/users/signup HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "vincent@hoohaa.com",
+  "password": "myPassword123"
+}
+
+###
+POST finni.dev/api/users/signin HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "vincent@hoohaa.com",
+  "password": "myPassword123"
+}
+
+###
+GET finni.dev/api/users/currentuser HTTP/1.1
+Content-Type: application/json
+
+###
+POST finni.dev/api/users/signout HTTP/1.1
+Content-Type: application/json
