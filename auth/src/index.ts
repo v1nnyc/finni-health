@@ -1,4 +1,4 @@
-// import mongoose from "mongoose";
+import mongoose from "mongoose";
 import { app } from "./app";
 
 const start = async () => {
@@ -6,12 +6,12 @@ const start = async () => {
     throw new Error("JWT_KEY must be defined");
   }
 
-  // if (!process.env.MONGO_URI) {
-  //   throw new Error("MONGO_URI must be defined");
-  // }
+  if (!process.env.MONGO_URI) {
+    throw new Error("MONGO_URI must be defined");
+  }
 
   try {
-    // await mongoose.connect(process.env.MONGO_URI);
+    await mongoose.connect(process.env.MONGO_URI);
   } catch (err) {
     console.log(err);
   }
