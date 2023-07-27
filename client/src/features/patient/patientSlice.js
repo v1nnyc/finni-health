@@ -58,14 +58,14 @@ const patientSlice = createSlice({
       })
       .addCase(createPatient.fulfilled, (state) => {
         state.isLoading = false;
-        toast.success("Job Created");
+        toast.success("Patient Created");
       })
       .addCase(createPatient.rejected, (state, { payload }) => {
         state.isLoading = false;
         toast.error(payload);
       })
       .addCase(deletePatient.fulfilled, (state, { payload }) => {
-        toast.success(payload);
+        toast.success("Patient Deleted...");
       })
       .addCase(deletePatient.rejected, (state, { payload }) => {
         toast.error(payload);
@@ -75,11 +75,11 @@ const patientSlice = createSlice({
       })
       .addCase(editPatient.fulfilled, (state) => {
         state.isLoading = false;
-        toast.success("Job Modified...");
+        toast.success("Patient Modified...");
       })
       .addCase(editPatient.rejected, (state, { payload }) => {
         state.isLoading = false;
-        toast.error(payload);
+        toast.error(payload.toString());
       });
   },
 });
