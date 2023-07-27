@@ -25,7 +25,6 @@ const AddPatient = () => {
     editPatientId,
   } = useSelector((store) => store.patient);
   const { user } = useSelector((store) => store.user);
-  console.log(dateOfBirth);
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -1,4 +1,4 @@
-import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from "react-icons/fa";
+import { FaLocationArrow, FaCalendarAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Wrapper from "../assets/wrappers/Patients";
 import { useDispatch } from "react-redux";
@@ -18,9 +18,8 @@ const Patients = ({
   addresses,
 }) => {
   const dispatch = useDispatch();
-  console.log(id);
 
-  const date = moment(dateOfBirth).format("MMM Do, YYYY");
+  const date = moment.utc(dateOfBirth).format("MMM Do, YYYY");
 
   return (
     <Wrapper>
@@ -36,11 +35,13 @@ const Patients = ({
       <div className="content">
         <div className="content-center">
           <PatientInfo icon={<FaCalendarAlt />} text={date} />
-          {addresses.map((address) => (
-            <PatientInfo icon={<FaLocationArrow />} text={address} />
+          {addresses.map((address, index) => (
+            <PatientInfo
+              key={index}
+              icon={<FaLocationArrow />}
+              text={address}
+            />
           ))}
-
-          <PatientInfo icon={<FaBriefcase />} text={"patientType"} />
         </div>
         <footer>
           <div className="actions">
@@ -54,6 +55,7 @@ const Patients = ({
                     firstName,
                     middleName,
                     lastName,
+                    dateOfBirth,
                     status,
                     addresses,
                   })
