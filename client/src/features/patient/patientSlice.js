@@ -44,7 +44,6 @@ const patientSlice = createSlice({
     clearValues: () => {
       return {
         ...initialState,
-        jobLocation: getUserFromLocalStorage()?.location || "",
       };
     },
     setEditPatient: (state, { payload }) => {
