@@ -17,6 +17,7 @@ router.post(
       lastName: patientData.lastName,
       dateOfBirth: patientData.dateOfBirth,
       status: patientData.status,
+      addresses: patientData.addresses,
     });
 
     await patient.save();

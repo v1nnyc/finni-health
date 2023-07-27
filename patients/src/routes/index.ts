@@ -12,7 +12,7 @@ router.get(
       providerId: req.currentUser!.id,
     });
 
-    res.send(patients);
+    res.send({ patients });
   }
 );
 

@@ -1,20 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import { getUserFromLocalStorage } from "../../utils/localStorage";
 import {
   createPatientThunk,
   deletePatientThunk,
   editPatientThunk,
 } from "./patientThunk";
+import { getUserFromLocalStorage } from "../../utils/localStorage";
 const initialState = {
   isLoading: false,
   firstName: "",
   middleName: "",
   lastName: "",
   dateOfBirth: "",
-  status: "",
+  status: "Inquiry",
   statusOptions: ["Inquiry", "Onboarding", "Active", "Churned"],
-  address: "",
+  addresses: [""],
   isEditing: false,
   // editPatientId: "",
 };

@@ -16,6 +16,7 @@ interface PatientAttrs {
   lastName: string;
   dateOfBirth: Date;
   status: PatientStatus;
+  addresses: string[];
 }
 
 // interface that describes the properties
@@ -26,6 +27,7 @@ interface PatientDoc extends mongoose.Document {
   middleName: string;
   lastName: string;
   status: PatientStatus;
+  addresses: string[];
 }
 
 // interface that describes the properties
@@ -61,6 +63,11 @@ const patientSchema = new mongoose.Schema(
       required: true,
       enum: Object.values(PatientStatus),
       default: PatientStatus.active,
+    },
+    addresses: {
+      type: [String],
+      required: false,
+      default: [],
     },
   },
   {

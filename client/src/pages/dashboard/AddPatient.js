@@ -10,6 +10,7 @@ import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import FormRow from "../../components/FormRow";
 import FormRowSelect from "../../components/FormRowSelect";
 import { useEffect } from "react";
+import AddressForm from "../../components/AddressForm";
 const AddPatient = () => {
   const {
     isLoading,
@@ -19,7 +20,7 @@ const AddPatient = () => {
     dateOfBirth,
     status,
     statusOptions,
-    address,
+    addresses,
     isEditing,
     editPatientId,
   } = useSelector((store) => store.patient);
@@ -55,7 +56,7 @@ const AddPatient = () => {
         lastName,
         dateOfBirth,
         status,
-        address,
+        addresses,
       })
     );
   };
@@ -120,32 +121,26 @@ const AddPatient = () => {
             list={statusOptions}
           />
           {/* Address */}
-          <FormRow
-            type="text"
-            name="address"
-            labelText="Address"
-            value={address}
-            handleChange={handlePatientInput}
-          />
-          <div className="btn-container">
-            <button
-              type="button"
-              className="btn btn-block clear-btn"
-              onClick={() => dispatch(clearValues())}
-            >
-              Clear
-            </button>
-            <button
-              type="submit"
-              className="btn btn-block submit-btn"
-              onClick={handleSubmit}
-              disabled={isLoading}
-            >
-              Submit
-            </button>
-          </div>
+          <AddressForm />
         </div>
       </form>
+      <div className="btn-container">
+        <button
+          type="button"
+          className="btn btn-block clear-btn"
+          onClick={() => dispatch(clearValues())}
+        >
+          Clear
+        </button>
+        <button
+          type="submit"
+          className="btn btn-block submit-btn"
+          onClick={handleSubmit}
+          disabled={isLoading}
+        >
+          Submit
+        </button>
+      </div>
     </Wrapper>
   );
 };
