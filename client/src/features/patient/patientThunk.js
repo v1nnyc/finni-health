@@ -30,7 +30,7 @@ export const deletePatientThunk = async (patientId, thunkAPI) => {
 export const editPatientThunk = async ({ patientId, patient }, thunkAPI) => {
   try {
     const resp = await customFetch.patch(`/patients/${patientId}`, patient);
-    // thunkAPI.dispatch(clearValues());
+    thunkAPI.dispatch(clearValues());
     return resp.data;
   } catch (error) {
     return checkForUnauthorizedResponse(error, thunkAPI);

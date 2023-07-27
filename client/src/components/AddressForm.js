@@ -2,7 +2,7 @@ import NavLinks from "./NavLinks";
 import Logo from "../components/Logo";
 import Wrapper from "../assets/wrappers/BigSidebar";
 import { useDispatch, useSelector } from "react-redux";
-import FormRow from "./FormRow";
+import FormRowToggle from "./FormRowToggle";
 import { handleChange } from "../features/patient/patientSlice";
 
 const AddressForm = () => {
@@ -41,25 +41,26 @@ const AddressForm = () => {
   };
 
   return (
-    <>
-      {addresses.map((address, index) => (
-        <div className="form-row" key={index}>
-          <FormRow
-            type="text"
-            name={`address${index}`}
-            labelText={`Address ${index + 1}`}
-            value={address}
-            handleChange={(e) => handleAddressChange(e, index)}
-          />
-          {addresses.length > 1 && (
-            <button onClick={(e) => handleRemoveAddress(e, index)}>
-              Remove
-            </button>
-          )}
-        </div>
-      ))}
-      <button onClick={handleAddAddress}>Add address</button>
-    </>
+    <form className="form">
+      <div className="form-center" style={{ marginBottom: "1rem" }}>
+        {addresses.map((address, index) => (
+          <div className="form-row" key={index}>
+            <FormRowToggle
+              type="text"
+              name={`address${index}`}
+              labelText={`Address ${index + 1}`}
+              value={address}
+              handleChange={(e) => handleAddressChange(e, index)}
+              handleToggle={(e) => handleRemoveAddress(e, index)}
+              showToggle={addresses.length > 1}
+            />
+          </div>
+        ))}
+      </div>
+      <button className="btn" onClick={handleAddAddress}>
+        Add address
+      </button>
+    </form>
   );
 };
 export default AddressForm;

@@ -10,7 +10,7 @@ const Wrapper = styled.section`
     margin-top: 0;
   }
   .form {
-    margin: 0;
+    margin: 0px 0 1.5rem;
     border-radius: 0;
     box-shadow: none;
     padding: 0;

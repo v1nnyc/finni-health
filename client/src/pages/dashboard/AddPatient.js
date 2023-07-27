@@ -121,10 +121,10 @@ const AddPatient = () => {
             handleChange={handlePatientInput}
             list={statusOptions}
           />
-          {/* Address */}
-          <AddressForm />
         </div>
       </form>
+      <AddressForm />
+
       <div className="btn-container">
         {!isEditing && (
           <button
