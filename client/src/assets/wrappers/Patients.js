@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.article`
   background: var(--white);
@@ -6,6 +6,7 @@ const Wrapper = styled.article`
   display: grid;
   grid-template-rows: 1fr auto;
   box-shadow: var(--shadow-2);
+  margin-bottom: 1rem;
 
   header {
     padding: 1rem 1.5rem;
@@ -41,18 +42,6 @@ const Wrapper = styled.article`
       letter-spacing: var(--letterSpacing);
     }
   }
-  .pending {
-    background: #fcefc7;
-    color: #e9b949;
-  }
-  .interview {
-    background: #e0e8f9;
-    color: #647acb;
-  }
-  .declined {
-    color: #d66a6a;
-    background: #ffeeee;
-  }
   .content {
     padding: 1rem 1.5rem;
   }
@@ -76,10 +65,27 @@ const Wrapper = styled.article`
     text-transform: capitalize;
     letter-spacing: var(--letterSpacing);
     text-align: center;
-    width: 100px;
+    width: 110px;
     height: 30px;
     margin-top: 0.5rem;
+    &.Active {
+      background: #d1e7dd;
+      color: #0f5132;
+    }
+    &.Onboarding {
+      background: #e0e8f9;
+      color: #647acb;
+    }
+    &.Inquiry {
+      background: #fcefc7;
+      color: #e9b949;
+    }
+    &.Churned {
+      color: #d66a6a;
+      background: #ffeeee;
+    }
   }
+
   footer {
     margin-top: 1rem;
   }

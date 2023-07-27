@@ -9,58 +9,59 @@ import {
   setEditPatient,
 } from "../features/patient/patientSlice";
 const Patients = ({
-  _id,
-  position,
-  company,
-  patientLocation,
-  patientType,
-  createdAt,
+  id,
+  firstName,
+  middleName,
+  lastName,
+  dateOfBirth,
   status,
+  addresses,
 }) => {
   const dispatch = useDispatch();
 
-  const date = moment(createdAt).format("MMM Do, YYYY");
+  const date = moment(dateOfBirth).format("MMM Do, YYYY");
 
   return (
     <Wrapper>
       <header>
-        <div className="main-icon">{company.charAt(0)}</div>
+        <div className="main-icon">{firstName.charAt(0)}</div>
         <div className="info">
-          <h5>{position}</h5>
-          <p>{company}</p>
+          <h5>
+            {firstName} {middleName} {lastName}
+          </h5>
+          <p className={`status ${status}`}>{status}</p>
         </div>
       </header>
       <div className="content">
         <div className="content-center">
-          <PatientInfo icon={<FaLocationArrow />} text={patientLocation} />
+          <PatientInfo icon={<FaLocationArrow />} text={addresses[0]} />
           <PatientInfo icon={<FaCalendarAlt />} text={date} />
-          <PatientInfo icon={<FaBriefcase />} text={patientType} />
-          <div className={`status ${status}`}>{status}</div>
+          <PatientInfo icon={<FaBriefcase />} text={"patientType"} />
         </div>
         <footer>
           <div className="actions">
             <Link
               to="/add-patient"
               className="btn edit-btn"
-              onClick={() =>
-                dispatch(
-                  setEditPatient({
-                    editPatientsId: _id,
-                    position,
-                    company,
-                    patientLocation,
-                    patientType,
-                    status,
-                  })
-                )
-              }
+              // onClick={() =>
+              //   dispatch(
+              //     setEditPatient({
+              //       editPatientsId: id,
+              //       position,
+              //       company,
+              //       patientLocation,
+              //       patientType,
+              //       status,
+              //     })
+              //   )
+              // }
             >
               Edit
             </Link>
             <button
               type="button"
               className="btn delete-btn"
-              onClick={() => dispatch(deletePatient(_id))}
+              onClick={() => dispatch(deletePatient(id))}
             >
               delete
             </button>

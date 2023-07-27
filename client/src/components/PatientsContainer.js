@@ -38,14 +38,14 @@ const PatientsContainer = () => {
   return (
     <Wrapper>
       <h5>
-        {totalPatients} patient{patients.length > 1 && "s"} found
+        {patients.length} patient{patients.length > 1 && "s"} found
       </h5>
       <div className="patients">
         {patients.map((patient) => {
-          return <Patient key={patient._id} {...patient} />;
+          return <Patient key={patient.id} {...patient} />;
         })}
       </div>
-      {numOfPages > 1 && <PageBtnContainer />}
+      {/* {numOfPages > 1 && <PageBtnContainer />} */}
     </Wrapper>
   );
 };
