@@ -16,7 +16,7 @@ const initialState = {
   statusOptions: ["Inquiry", "Onboarding", "Active", "Churned"],
   addresses: [""],
   isEditing: false,
-  // editPatientId: "",
+  editPatientId: "",
 };
 
 export const createPatient = createAsyncThunk(

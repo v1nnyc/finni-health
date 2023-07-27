@@ -18,6 +18,7 @@ const Patients = ({
   addresses,
 }) => {
   const dispatch = useDispatch();
+  console.log(id);
 
   const date = moment(dateOfBirth).format("MMM Do, YYYY");
 
@@ -34,8 +35,11 @@ const Patients = ({
       </header>
       <div className="content">
         <div className="content-center">
-          <PatientInfo icon={<FaLocationArrow />} text={addresses[0]} />
           <PatientInfo icon={<FaCalendarAlt />} text={date} />
+          {addresses.map((address) => (
+            <PatientInfo icon={<FaLocationArrow />} text={address} />
+          ))}
+
           <PatientInfo icon={<FaBriefcase />} text={"patientType"} />
         </div>
         <footer>
@@ -43,18 +47,18 @@ const Patients = ({
             <Link
               to="/add-patient"
               className="btn edit-btn"
-              // onClick={() =>
-              //   dispatch(
-              //     setEditPatient({
-              //       editPatientsId: id,
-              //       position,
-              //       company,
-              //       patientLocation,
-              //       patientType,
-              //       status,
-              //     })
-              //   )
-              // }
+              onClick={() =>
+                dispatch(
+                  setEditPatient({
+                    editPatientId: id,
+                    firstName,
+                    middleName,
+                    lastName,
+                    status,
+                    addresses,
+                  })
+                )
+              }
             >
               Edit
             </Link>

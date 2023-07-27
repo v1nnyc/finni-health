@@ -8,6 +8,7 @@ import { indexPatientsRouter } from "./routes";
 // import { showOrdersRouter } from "./routes/show";
 import { newPatientRouter } from "./routes/new";
 import { deletePatientRouter } from "./routes/delete";
+import { updatePatientRouter } from "./routes/patch";
 // import { patchOrdersRouter } from "./routes/patch";
 const cors = require("cors");
 
@@ -25,8 +26,8 @@ app.use(
 app.use(currentUser);
 
 app.use(indexPatientsRouter);
-// app.use(showOrdersRouter);
 app.use(newPatientRouter);
+app.use(updatePatientRouter);
 app.use(deletePatientRouter);
 
 app.all("*", async () => {

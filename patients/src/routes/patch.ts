@@ -5,32 +5,37 @@ import {
   requireAuth,
 } from "@v1nnyc/common";
 import express, { Request, Response } from "express";
-import { Order } from "../models/patient";
-import { natsWrapper } from "../nats-wrapper";
+import { Patient } from "../models/patient";
 
 const router = express.Router();
 
 router.patch(
-  "/api/orders/:orderId",
+  "/api/patients/:patientId",
   requireAuth,
   async (req: Request, res: Response) => {
-    const orderId = req.params.orderId;
+    const patientId = req.params.patientId;
 
-    const order = await Order.findById(orderId).populate("ticket");
+    // Assuming that the updated details are in the request body
+    const updates = req.body;
 
-    if (!order) {
+    const patient = await Patient.findById(patientId);
+
+    if (!patient) {
       throw new NotFoundError();
     }
 
-    if (order.userId !== req.currentUser!.id) {
-      throw new NotAuthorizedError("Not authorized to view this order");
+    if (patient.providerId.toString() !== req.currentUser!.id) {
+      throw new NotAuthorizedError("Not authorized to view this patient");
     }
 
-    order.status = OrderStatus.Cancelled;
-    await order.save();
+    // Update the patient details with the updated details
+    Object.assign(patient, updates);
 
-    res.status(204).send(order);
+    // Save the updated patient
+    await patient.save();
+
+    res.status(200).send(patient);
   }
 );
 
-export { router as patchOrdersRouter };
+export { router as updatePatientRouter };

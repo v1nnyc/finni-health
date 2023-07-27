@@ -25,6 +25,7 @@ const AddPatient = () => {
     editPatientId,
   } = useSelector((store) => store.patient);
   const { user } = useSelector((store) => store.user);
+  console.log(dateOfBirth);
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,22 +34,22 @@ const AddPatient = () => {
     //   toast.error('Please fill out all fields');
     //   return;
     // }
-    // if (isEditing) {
-    //   dispatch(
-    //     editPatient({
-    //       patientId: editPatientId,
-    //       patient: {
-    //         firstName,
-    //         middleName,
-    //         lastName,
-    //         dateOfBirth,
-    //         status,
-    //         address,
-    //       },
-    //     })
-    //   );
-    //   return;
-    // }
+    if (isEditing) {
+      dispatch(
+        editPatient({
+          patientId: editPatientId,
+          patient: {
+            firstName,
+            middleName,
+            lastName,
+            dateOfBirth,
+            status,
+            addresses,
+          },
+        })
+      );
+      return;
+    }
     dispatch(
       createPatient({
         firstName,
@@ -80,7 +81,7 @@ const AddPatient = () => {
 
   return (
     <Wrapper>
-      <h4>add new patient</h4>
+      <h4>{isEditing ? "edit" : "add new"} patient</h4>
       <form className="form">
         <div className="form-center">
           {/* Names */}
@@ -126,20 +127,22 @@ const AddPatient = () => {
         </div>
       </form>
       <div className="btn-container">
-        <button
-          type="button"
-          className="btn btn-block clear-btn"
-          onClick={() => dispatch(clearValues())}
-        >
-          Clear
-        </button>
+        {!isEditing && (
+          <button
+            type="button"
+            className="btn btn-block clear-btn"
+            onClick={() => dispatch(clearValues())}
+          >
+            Clear
+          </button>
+        )}
         <button
           type="submit"
           className="btn btn-block submit-btn"
           onClick={handleSubmit}
           disabled={isLoading}
         >
-          Submit
+          {isEditing ? "Save" : "Submit"}
         </button>
       </div>
     </Wrapper>
