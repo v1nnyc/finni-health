@@ -1,4 +1,4 @@
-import { FaLocationArrow, FaCalendarAlt } from "react-icons/fa";
+import { FaLocationArrow, FaBirthdayCake } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Wrapper from "../assets/wrappers/Patients";
 import { useDispatch } from "react-redux";
@@ -34,7 +34,7 @@ const Patients = ({
       </header>
       <div className="content">
         <div className="content-center">
-          <PatientInfo icon={<FaCalendarAlt />} text={date} />
+          <PatientInfo icon={<FaBirthdayCake />} text={date} />
           {addresses.map((address, index) => (
             <PatientInfo
               key={index}
