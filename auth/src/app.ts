@@ -8,14 +8,17 @@ import { signinRouter } from "./routes/signin";
 import { signoutRouter } from "./routes/signout";
 import { signupRouter } from "./routes/signup";
 import { errorHandler, NotFoundError } from "@v1nnyc/common";
+const cors = require("cors");
 
 const app = express();
+app.use(cors());
 app.set("trust proxy", true);
 app.use(json());
 app.use(
   cookieSession({
     signed: false,
-    secure: process.env.NODE_ENV !== "test",
+    // secure: process.env.NODE_ENV !== 'test',
+    secure: false,
   })
 );
 

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patients-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: patients-mongo
+  template:
+    metadata:
+      labels:
+        app: patients-mongo
+    spec:
+      containers:
+        - name: patients-mongo
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: patients-mongo-srv
+spec:
+  selector:
+    app: patients-mongo
+  ports:
+    - name: patients-mongo
+      protocol: TCP
+      port: 27017
+      targetPort: 27017

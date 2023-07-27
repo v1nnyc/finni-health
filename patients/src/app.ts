@@ -6,10 +6,12 @@ import cookieSession from "cookie-session";
 import { currentUser, errorHandler, NotFoundError } from "@v1nnyc/common";
 import { indexPatientsRouter } from "./routes";
 // import { showOrdersRouter } from "./routes/show";
-// import { newOrdersRouter } from "./routes/new";
+import { newPatientRouter } from "./routes/new";
 // import { patchOrdersRouter } from "./routes/patch";
+const cors = require("cors");
 
 const app = express();
+app.use(cors());
 app.set("trust proxy", true);
 app.use(json());
 app.use(
@@ -23,7 +25,7 @@ app.use(currentUser);
 
 app.use(indexPatientsRouter);
 // app.use(showOrdersRouter);
-// app.use(newOrdersRouter);
+app.use(newPatientRouter);
 // app.use(patchOrdersRouter);
 
 app.all("*", async () => {

@@ -1,27 +1,18 @@
 import { requireAuth } from "@v1nnyc/common";
 import express, { Request, Response } from "express";
-// import { Order } from "../models/patient";
+import { Patient } from "../models/patient";
 
 const router = express.Router();
 
 router.get(
   "/api/patients/",
-  // requireAuth,
+  requireAuth,
   async (req: Request, res: Response) => {
-    // const orders = await Order.find({
-    //   userId: req.currentUser!.id,
-    // }).populate("ticket");
+    const patients = await Patient.find({
+      providerId: req.currentUser!.id,
+    });
 
-    res.send([
-      {
-        patientId: "123456",
-        providerId: "123",
-        firstName: "John",
-        middleName: "Doe",
-        lastName: "Smith",
-        status: "PatientStatus.ACTIVE",
-      },
-    ]);
+    res.send(patients);
   }
 );
 

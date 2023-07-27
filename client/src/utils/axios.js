@@ -10,6 +10,7 @@ const customFetch = axios.create({
 customFetch.interceptors.request.use((config) => {
   const user = getUserFromLocalStorage();
   if (user) {
+    config.headers["Access-Control-Allow-Credentials"] = true;
     config.headers["Authorization"] = `Bearer ${user.token}`;
   }
   return config;

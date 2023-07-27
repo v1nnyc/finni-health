@@ -18,14 +18,6 @@ build:
         manual:
           - src: "src/**/*.ts"
             dest: .
-    - image: v1nnyc/client
-      context: client
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: "pages/**/*.js"
-            dest: .
     - image: v1nnyc/patients
       context: patients
       docker:
@@ -33,4 +25,12 @@ build:
       sync:
         manual:
           - src: "src/**/*.ts"
+            dest: .
+    - image: v1nnyc/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "pages/**/*.js"
             dest: .

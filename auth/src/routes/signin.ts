@@ -23,7 +23,7 @@ router.post(
 
     const existingUser = await User.findOne({ email });
     if (!existingUser) {
-      throw new BadRequestError("fuck you!");
+      throw new BadRequestError("Email not in use");
     }
 
     const passwordsMatch = await Password.compare(

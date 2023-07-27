@@ -5,6 +5,7 @@ POST finni.dev/api/users/signup HTTP/1.1
 Content-Type: application/json
 
 {
+  "name": "test name",
   "email": "vincent@hoohaa.com",
   "password": "myPassword123"
 }

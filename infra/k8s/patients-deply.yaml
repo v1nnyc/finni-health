@@ -16,8 +16,8 @@ spec:
         - name: patients
           image: v1nnyc/patients
           env:
-            # - name: MONGO_URI
-            #   value: "mongodb://patients-mongo-srv:27017/patients"
+            - name: MONGO_URI
+              value: "mongodb://patients-mongo-srv:27017/patients"
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
