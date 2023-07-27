@@ -1,5 +1,10 @@
 // import { showLoading, hideLoading, getAllJobs } from '../allJobs/allJobsSlice';
 import customFetch, { checkForUnauthorizedResponse } from "../../utils/axios";
+import {
+  getAllPatients,
+  hideLoading,
+  showLoading,
+} from "../allPatients/allPatientsSlice";
 import { clearValues } from "./patientSlice";
 
 export const createPatientThunk = async (patient, thunkAPI) => {
@@ -12,13 +17,13 @@ export const createPatientThunk = async (patient, thunkAPI) => {
   }
 };
 export const deletePatientThunk = async (patientId, thunkAPI) => {
-  // thunkAPI.dispatch(showLoading());
+  thunkAPI.dispatch(showLoading());
   try {
     const resp = await customFetch.delete(`/patients/${patientId}`);
-    // thunkAPI.dispatch(getAllJobs());
+    thunkAPI.dispatch(getAllPatients());
     return resp.data.msg;
   } catch (error) {
-    // thunkAPI.dispatch(hideLoading());
+    thunkAPI.dispatch(hideLoading());
     return checkForUnauthorizedResponse(error, thunkAPI);
   }
 };

@@ -80,6 +80,7 @@ const AddPatient = () => {
 
   return (
     <Wrapper>
+      <h4>add new patient</h4>
       <form className="form">
         <div className="form-center">
           {/* Names */}
