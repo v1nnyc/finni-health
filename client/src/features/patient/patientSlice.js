@@ -5,7 +5,6 @@ import {
   deletePatientThunk,
   editPatientThunk,
 } from "./patientThunk";
-import { getUserFromLocalStorage } from "../../utils/localStorage";
 const initialState = {
   isLoading: false,
   firstName: "",

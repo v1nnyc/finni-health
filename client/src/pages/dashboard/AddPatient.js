@@ -9,7 +9,6 @@ import {
 import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import FormRow from "../../components/FormRow";
 import FormRowSelect from "../../components/FormRowSelect";
-import { useEffect } from "react";
 import AddressForm from "../../components/AddressForm";
 const AddPatient = () => {
   const {
@@ -24,15 +23,10 @@ const AddPatient = () => {
     isEditing,
     editPatientId,
   } = useSelector((store) => store.patient);
-  const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // if (!position || !company || !jobLocation) {
-    //   toast.error('Please fill out all fields');
-    //   return;
-    // }
     if (isEditing) {
       dispatch(
         editPatient({
@@ -49,6 +43,7 @@ const AddPatient = () => {
       );
       return;
     }
+
     dispatch(
       createPatient({
         firstName,
@@ -66,17 +61,6 @@ const AddPatient = () => {
     const value = e.target.value;
     dispatch(handleChange({ name, value }));
   };
-
-  useEffect(() => {
-    if (!isEditing) {
-      // dispatch(
-      //   handleChange({
-      //     name: 'jobLocation',
-      //     value: user.location,
-      //   })
-      // );
-    }
-  }, []);
 
   return (
     <Wrapper>

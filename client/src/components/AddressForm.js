@@ -1,6 +1,3 @@
-import NavLinks from "./NavLinks";
-import Logo from "../components/Logo";
-import Wrapper from "../assets/wrappers/BigSidebar";
 import { useDispatch, useSelector } from "react-redux";
 import FormRowToggle from "./FormRowToggle";
 import { handleChange } from "../features/patient/patientSlice";

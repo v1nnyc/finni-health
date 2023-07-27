@@ -22,7 +22,7 @@ const PatientsContainer = () => {
 
   useEffect(() => {
     dispatch(getAllPatients());
-  }, [page, firstName, middleName, lastName, status, sort]);
+  }, [dispatch, page, firstName, middleName, lastName, status, sort]);
 
   if (isLoading) {
     return <Loading center={true} />;
