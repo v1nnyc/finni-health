@@ -4,7 +4,7 @@ import { getUserFromLocalStorage } from "./localStorage";
 
 const customFetch = axios.create({
   // baseURL: "https://ingress-nginx-controller.ingress-nginx.svc.cluster.local",
-  baseURL: "https://finni.dev",
+  baseURL: "https://finni.dev/api",
 });
 
 customFetch.interceptors.request.use((config) => {
