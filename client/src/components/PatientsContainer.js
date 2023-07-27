@@ -10,18 +10,19 @@ const PatientsContainer = () => {
     patients,
     isLoading,
     page,
+    firstName,
+    middleName,
+    lastName,
     totalPatients,
     numOfPages,
-    search,
-    searchStatus,
-    searchType,
+    status,
     sort,
   } = useSelector((store) => store.allPatients);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllPatients());
-  }, [page, search, searchStatus, searchType, sort]);
+  }, [page, firstName, middleName, lastName, status, sort]);
 
   if (isLoading) {
     return <Loading center={true} />;

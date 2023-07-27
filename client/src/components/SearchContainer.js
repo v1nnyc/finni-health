@@ -9,10 +9,13 @@ import FormRow from "./FormRow";
 import FormRowSelect from "./FormRowSelect";
 
 const SearchContainer = () => {
-  const [localSearch, setLocalSearch] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [middleName, setMiddleName] = useState("");
+  const [lastName, setLastName] = useState("");
 
-  const { isLoading, search, searchStatus, searchType, sort, sortOptions } =
-    useSelector((store) => store.allPatients);
+  const { isLoading, status, sort, sortOptions } = useSelector(
+    (store) => store.allPatients
+  );
 
   const { statusOptions } = useSelector((store) => store.patient);
 
@@ -22,21 +25,28 @@ const SearchContainer = () => {
     dispatch(handleChange({ name: e.target.name, value: e.target.value }));
   };
 
-  const debounce = () => {
+  const debounce = (setter) => {
     let timeoutID;
     return (e) => {
-      setLocalSearch(e.target.value);
+      setter(e.target.value);
       clearTimeout(timeoutID);
       timeoutID = setTimeout(() => {
         dispatch(handleChange({ name: e.target.name, value: e.target.value }));
       }, 1000);
     };
   };
-  const optimizedDebounce = useMemo(() => debounce(), []);
+  const optimizedDebounceFirstName = useMemo(() => debounce(setFirstName), []);
+  const optimizedDebounceMiddleName = useMemo(
+    () => debounce(setMiddleName),
+    []
+  );
+  const optimizedDebounceLastName = useMemo(() => debounce(setLastName), []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLocalSearch("");
+    setFirstName("");
+    setMiddleName("");
+    setLastName("");
     dispatch(clearFilters());
   };
 
@@ -45,21 +55,43 @@ const SearchContainer = () => {
       <form className="form">
         <h4>search form</h4>
         <div className="form-center">
-          {/* search position */}
+          {/* search firstName */}
           <FormRow
             type="text"
-            name="name"
-            value={localSearch}
-            handleChange={optimizedDebounce}
+            name="firstName"
+            value={firstName}
+            handleChange={optimizedDebounceFirstName}
+          />
+          {/* search middleName */}
+          <FormRow
+            type="text"
+            name="middleName"
+            value={middleName}
+            handleChange={optimizedDebounceMiddleName}
+          />
+          {/* search lastName */}
+          <FormRow
+            type="text"
+            name="lastName"
+            value={lastName}
+            handleChange={optimizedDebounceLastName}
           />
           {/* search by status */}
           <FormRowSelect
             labelText="status"
-            name="searchStatus"
-            value={searchStatus}
+            name="status"
+            value={status}
             handleChange={handleSearch}
             list={["All", ...statusOptions]}
           />
+          {/* sort */}
+          <FormRowSelect
+            name="sort"
+            value={sort}
+            handleChange={handleSearch}
+            list={sortOptions}
+          />
+
           <button
             className="btn btn-block btn-danger"
             disabled={isLoading}
@@ -72,4 +104,5 @@ const SearchContainer = () => {
     </Wrapper>
   );
 };
+
 export default SearchContainer;

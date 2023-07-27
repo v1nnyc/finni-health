@@ -3,11 +3,13 @@ import { toast } from "react-toastify";
 import { getAllPatientsThunk } from "./allPatientsThunk";
 
 const initialFiltersState = {
-  search: "",
-  searchStatus: "all",
+  firstName: "",
+  middleName: "",
+  lastName: "",
+  status: "all",
   searchType: "all",
-  sort: "latest",
-  sortOptions: ["latest", "oldest", "a-z", "z-a"],
+  sort: "a-z",
+  sortOptions: ["a-z", "z-a"],
 };
 
 const initialState = {

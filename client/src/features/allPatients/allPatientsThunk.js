@@ -1,13 +1,24 @@
 import customFetch, { checkForUnauthorizedResponse } from "../../utils/axios";
 
 export const getAllPatientsThunk = async (_, thunkAPI) => {
-  const { page, search, searchStatus, searchType, sort } =
+  const { page, firstName, middleName, lastName, status, sort } =
     thunkAPI.getState().allPatients;
 
-  let url = `/patients?status=${searchStatus}&jobType=${searchType}&sort=${sort}&page=${page}`;
-  if (search) {
-    url = url + `&search=${search}`;
+  // let url = `/patients?status=${searchStatus}&jobType=${searchType}&sort=${sort}&page=${page}`;
+  let url = `/patients?status=${status}&sort=${sort}`;
+
+  if (firstName) {
+    url += `&firstName=${firstName}`;
   }
+
+  if (middleName) {
+    url += `&middleName=${middleName}`;
+  }
+
+  if (lastName) {
+    url += `&lastName=${lastName}`;
+  }
+
   try {
     const resp = await customFetch.get(url);
     return resp.data;
