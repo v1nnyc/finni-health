@@ -1,7 +1,7 @@
 const FormRow = ({ type, name, value, handleChange, labelText }) => {
   let processedValue = value;
 
-  if (type === "date" && typeof value === "string") {
+  if (type === "date" && value && typeof value === "string") {
     const dateObject = new Date(value);
     processedValue = dateObject.toISOString().split("T")[0];
   }
