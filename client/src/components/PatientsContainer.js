@@ -28,7 +28,7 @@ const PatientsContainer = () => {
     return <Loading center={true} />;
   }
 
-  if (patients.length === 0) {
+  if (totalPatients === 0) {
     return (
       <Wrapper>
         <h2>No patients to display...</h2>
@@ -39,14 +39,14 @@ const PatientsContainer = () => {
   return (
     <Wrapper>
       <h5>
-        {patients.length} patient{patients.length > 1 && "s"} found
+        {totalPatients} patient{totalPatients > 1 && "s"} found
       </h5>
       <div className="patients">
         {patients.map((patient) => {
           return <Patient key={patient.id} {...patient} />;
         })}
       </div>
-      {/* {numOfPages > 1 && <PageBtnContainer />} */}
+      {numOfPages > 1 && <PageBtnContainer />}
     </Wrapper>
   );
 };

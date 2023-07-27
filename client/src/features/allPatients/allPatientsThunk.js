@@ -4,8 +4,7 @@ export const getAllPatientsThunk = async (_, thunkAPI) => {
   const { page, firstName, middleName, lastName, status, sort } =
     thunkAPI.getState().allPatients;
 
-  // let url = `/patients?status=${searchStatus}&jobType=${searchType}&sort=${sort}&page=${page}`;
-  let url = `/patients?status=${status}&sort=${sort}`;
+  let url = `/patients?status=${status}&sort=${sort}&page=${page}`;
 
   if (firstName) {
     url += `&firstName=${firstName}`;

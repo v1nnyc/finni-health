@@ -58,8 +58,8 @@ const allPatientsSlice = createSlice({
       .addCase(getAllPatients.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.patients = payload.patients;
-        // state.numOfPages = payload.numOfPages;
-        // state.totalPatients = payload.totalPatients;
+        state.numOfPages = payload.numOfPages;
+        state.totalPatients = payload.totalPatients;
       })
       .addCase(getAllPatients.rejected, (state, { payload }) => {
         state.isLoading = false;

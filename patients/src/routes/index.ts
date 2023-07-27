@@ -13,6 +13,9 @@ router.get(
     const middleName = req.query.middleName as string;
     const lastName = req.query.lastName as string;
     const sort = req.query.sort as string;
+    const page = Number(req.query.page) || 1;
+
+    const pageSize = 10; // number of patients per page
 
     let query: {
       providerId: string;
@@ -39,9 +42,9 @@ router.get(
     let sortOption = {};
     if (sort) {
       if (sort === "a-z") {
-        sortOption = { firstName: 1, middleName: 1, lastName: 1 }; // 1 for ascending order
+        sortOption = { firstName: 1, middleName: 1, lastName: 1 };
       } else if (sort === "z-a") {
-        sortOption = { firstName: -1, middleName: -1, lastName: -1 }; // -1 for descending order
+        sortOption = { firstName: -1, middleName: -1, lastName: -1 };
       }
     }
 
@@ -49,9 +52,18 @@ router.get(
       query.status = status;
     }
 
-    const patients = await Patient.find(query).sort(sortOption);
+    const patients = await Patient.find(query)
+      .skip((page - 1) * pageSize)
+      .limit(pageSize)
+      .sort(sortOption);
 
-    res.send({ patients });
+    const totalPatients = await Patient.countDocuments(query);
+
+    res.send({
+      patients,
+      totalPatients,
+      numOfPages: Math.ceil(totalPatients / pageSize),
+    });
   }
 );
 
