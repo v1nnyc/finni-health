@@ -10,9 +10,7 @@ const BigSidebar = () => {
     <Wrapper>
       <div
         className={
-          isSidebarOpen
-            ? "sidebar-container "
-            : "sidebar-container show-sidebar"
+          isSidebarOpen ? "sidebar-container show-sidebar" : "sidebar-container"
         }
       >
         <div className="content">
