@@ -5,16 +5,12 @@ import cookieSession from "cookie-session";
 
 import { currentUser, errorHandler, NotFoundError } from "@v1nnyc/common";
 import { indexPatientsRouter } from "./routes";
-// import { showOrdersRouter } from "./routes/show";
 import { newPatientRouter } from "./routes/new";
 import { deletePatientRouter } from "./routes/delete";
 import { updatePatientRouter } from "./routes/patch";
 import { populateRouter } from "./routes/populate";
-// import { patchOrdersRouter } from "./routes/patch";
-const cors = require("cors");
 
 const app = express();
-app.use(cors());
 app.set("trust proxy", true);
 app.use(json());
 app.use(
