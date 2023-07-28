@@ -16,6 +16,8 @@ const Patients = ({
   dateOfBirth,
   status,
   addresses,
+  additionalTextFields,
+  additionalNumericalFields,
 }) => {
   const dispatch = useDispatch();
 
@@ -35,13 +37,9 @@ const Patients = ({
       <div className="content">
         <div className="content-center">
           <PatientInfo icon={<FaBirthdayCake />} text={date} />
-          {addresses.map((address, index) => (
-            <PatientInfo
-              key={index}
-              icon={<FaLocationArrow />}
-              text={address}
-            />
-          ))}
+          {addresses[0] && (
+            <PatientInfo icon={<FaLocationArrow />} text={addresses[0]} />
+          )}
         </div>
         <footer>
           <div className="actions">
@@ -58,6 +56,8 @@ const Patients = ({
                     dateOfBirth,
                     status,
                     addresses,
+                    additionalTextFields,
+                    additionalNumericalFields,
                   })
                 )
               }

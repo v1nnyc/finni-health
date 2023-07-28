@@ -17,6 +17,8 @@ interface PatientAttrs {
   dateOfBirth: Date;
   status: PatientStatus;
   addresses: string[];
+  additionalTextFields: string[];
+  additionalNumericalFields: number[];
 }
 
 // interface that describes the properties
@@ -28,6 +30,8 @@ interface PatientDoc extends mongoose.Document {
   lastName: string;
   status: PatientStatus;
   addresses: string[];
+  additionalTextFields: string[];
+  additionalNumericalFields: number[];
 }
 
 // interface that describes the properties
@@ -66,6 +70,16 @@ const patientSchema = new mongoose.Schema(
     },
     addresses: {
       type: [String],
+      required: false,
+      default: [],
+    },
+    additionalTextFields: {
+      type: [String],
+      required: false,
+      default: [],
+    },
+    additionalNumericalFields: {
+      type: [Number],
       required: false,
       default: [],
     },

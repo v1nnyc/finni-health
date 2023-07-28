@@ -14,6 +14,8 @@ const initialState = {
   status: "Inquiry",
   statusOptions: ["Inquiry", "Onboarding", "Active", "Churned"],
   addresses: [""],
+  additionalTextFields: [""],
+  additionalNumericalFields: ["0"],
   isEditing: false,
   editPatientId: "",
 };

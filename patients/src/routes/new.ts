@@ -18,6 +18,8 @@ router.post(
       dateOfBirth: patientData.dateOfBirth,
       status: patientData.status,
       addresses: patientData.addresses,
+      additionalTextFields: patientData.additionalTextFields,
+      additionalNumericalFields: patientData.additionalNumericalFields,
     });
 
     await patient.save();

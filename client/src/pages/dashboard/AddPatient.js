@@ -9,7 +9,7 @@ import {
 import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import FormRow from "../../components/FormRow";
 import FormRowSelect from "../../components/FormRowSelect";
-import AddressForm from "../../components/AddressForm";
+import DynamicFieldForm from "../../components/DynamicFieldForm";
 const AddPatient = () => {
   const {
     isLoading,
@@ -20,6 +20,8 @@ const AddPatient = () => {
     status,
     statusOptions,
     addresses,
+    additionalTextFields,
+    additionalNumericalFields,
     isEditing,
     editPatientId,
   } = useSelector((store) => store.patient);
@@ -38,6 +40,8 @@ const AddPatient = () => {
             dateOfBirth,
             status,
             addresses,
+            additionalTextFields,
+            additionalNumericalFields,
           },
         })
       );
@@ -52,6 +56,8 @@ const AddPatient = () => {
         dateOfBirth,
         status,
         addresses,
+        additionalTextFields,
+        additionalNumericalFields,
       })
     );
   };
@@ -107,7 +113,13 @@ const AddPatient = () => {
           />
         </div>
       </form>
-      <AddressForm />
+      <DynamicFieldForm fieldKey="addresses" label="Address" />
+      <DynamicFieldForm fieldKey="additionalTextFields" label="Text Field" />
+      <DynamicFieldForm
+        fieldKey="additionalNumericalFields"
+        label="Numerical Field"
+        inputType="number"
+      />
 
       <div className="btn-container">
         {!isEditing && (
