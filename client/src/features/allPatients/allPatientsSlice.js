@@ -7,7 +7,6 @@ const initialFiltersState = {
   middleName: "",
   lastName: "",
   status: "all",
-  searchType: "all",
   sort: "a-z",
   sortOptions: ["a-z", "z-a"],
 };
@@ -18,8 +17,6 @@ const initialState = {
   totalPatients: 0,
   numOfPages: 1,
   page: 1,
-  stats: {},
-  monthlyApplications: [],
   ...initialFiltersState,
 };
 

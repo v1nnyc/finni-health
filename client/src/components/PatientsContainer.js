@@ -9,14 +9,14 @@ const PatientsContainer = () => {
   const {
     patients,
     isLoading,
-    page,
     firstName,
     middleName,
     lastName,
-    totalPatients,
-    numOfPages,
     status,
     sort,
+    totalPatients,
+    numOfPages,
+    page,
   } = useSelector((store) => store.allPatients);
   const dispatch = useDispatch();
 
