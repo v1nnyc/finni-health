@@ -9,6 +9,7 @@ import { indexPatientsRouter } from "./routes";
 import { newPatientRouter } from "./routes/new";
 import { deletePatientRouter } from "./routes/delete";
 import { updatePatientRouter } from "./routes/patch";
+import { populateRouter } from "./routes/populate";
 // import { patchOrdersRouter } from "./routes/patch";
 const cors = require("cors");
 
@@ -29,6 +30,7 @@ app.use(indexPatientsRouter);
 app.use(newPatientRouter);
 app.use(updatePatientRouter);
 app.use(deletePatientRouter);
+app.use(populateRouter);
 
 app.all("*", async () => {
   throw new NotFoundError();
