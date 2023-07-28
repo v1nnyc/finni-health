@@ -1,4 +1,9 @@
-import { FaLocationArrow, FaBirthdayCake } from "react-icons/fa";
+import {
+  FaLocationArrow,
+  FaBirthdayCake,
+  FaPoundSign,
+  FaPaw,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Wrapper from "../assets/wrappers/Patients";
 import { useDispatch } from "react-redux";
@@ -37,8 +42,23 @@ const Patients = ({
       <div className="content">
         <div className="content-center">
           <PatientInfo icon={<FaBirthdayCake />} text={date} />
-          {addresses[0] && (
-            <PatientInfo icon={<FaLocationArrow />} text={addresses[0]} />
+          {addresses.length > 0 && (
+            <PatientInfo
+              icon={<FaLocationArrow />}
+              text={addresses.join(", ")}
+            />
+          )}
+          {additionalTextFields.length > 0 && (
+            <PatientInfo
+              icon={<FaPaw />}
+              text={additionalTextFields.join(", ")}
+            />
+          )}
+          {additionalNumericalFields.length > 0 && (
+            <PatientInfo
+              icon={<FaPoundSign />}
+              text={additionalNumericalFields.join(", ")}
+            />
           )}
         </div>
         <footer>

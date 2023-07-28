@@ -113,7 +113,11 @@ const AddPatient = () => {
           />
         </div>
       </form>
-      <DynamicFieldForm fieldKey="addresses" label="Address" />
+      <DynamicFieldForm
+        fieldKey="addresses"
+        label="Address"
+        hideSingleToggle={true}
+      />
       <DynamicFieldForm fieldKey="additionalTextFields" label="Text Field" />
       <DynamicFieldForm
         fieldKey="additionalNumericalFields"

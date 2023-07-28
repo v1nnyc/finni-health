@@ -2,7 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import FormRowToggle from "./FormRowToggle";
 import { handleChange } from "../features/patient/patientSlice";
 
-const DynamicFieldForm = ({ fieldKey, label, inputType = "text" }) => {
+const DynamicFieldForm = ({
+  fieldKey,
+  label,
+  inputType = "text",
+  hideSingleToggle = false,
+}) => {
   const fieldArray = useSelector((store) => store.patient[fieldKey]);
   const dispatch = useDispatch();
 
@@ -50,7 +55,7 @@ const DynamicFieldForm = ({ fieldKey, label, inputType = "text" }) => {
               value={fieldValue}
               handleChange={(e) => handleFieldChange(e, index)}
               handleToggle={(e) => handleRemoveField(e, index)}
-              showToggle={fieldArray.length > 1}
+              showToggle={fieldArray.length > 1 || !hideSingleToggle}
             />
           </div>
         ))}
