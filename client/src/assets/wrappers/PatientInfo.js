@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   margin-top: 0.5rem;
@@ -17,6 +17,8 @@ const Wrapper = styled.div`
   .text {
     text-transform: capitalize;
     letter-spacing: var(--letterSpacing);
+    max-height: 3rem;
+    overflow: scroll;
   }
-`
-export default Wrapper
+`;
+export default Wrapper;
